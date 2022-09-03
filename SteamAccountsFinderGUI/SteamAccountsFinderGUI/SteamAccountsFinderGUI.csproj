@@ -1,21 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <TargetFramework>net5.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
         <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-		  <LangVersion>default</LangVersion>
+		  <PublishSingleFile>true</PublishSingleFile>
+          <ApplicationIcon>Res\redIcon.ico</ApplicationIcon>
     </PropertyGroup>
 
 	
 
     <ItemGroup>
-      <PackageReference Include="Costura.Fody" Version="5.7.0">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
       <PackageReference Include="Daishi.JsonParser" Version="1.5.0" />
       <PackageReference Include="WPF-UI" Version="2.0.2" />
     </ItemGroup>
@@ -25,6 +22,11 @@
         <Generator>MSBuild:Compile</Generator>
         <XamlRuntime>Wpf</XamlRuntime>
       </ApplicationDefinition>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Res\icons8-steam-64.png" />
+        <Resource Include="Res\icons8-steam-64.png" />
     </ItemGroup>
 
 </Project>
