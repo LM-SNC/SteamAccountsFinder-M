@@ -7,6 +7,7 @@
         <UseWPF>true</UseWPF>
         <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		  <PublishSingleFile>true</PublishSingleFile>
+		  <ApplicationIcon>Res\redIcon.ico</ApplicationIcon>
     </PropertyGroup>
 
 	
@@ -21,6 +22,11 @@
         <Generator>MSBuild:Compile</Generator>
         <XamlRuntime>Wpf</XamlRuntime>
       </ApplicationDefinition>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Res\icons8-steam-64.png" />
+      <Resource Include="Res\icons8-steam-64.png" />
     </ItemGroup>
 
 </Project>

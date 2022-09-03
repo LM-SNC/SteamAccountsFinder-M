@@ -20,7 +20,7 @@
         <Menu Margin="0,8,0,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Center" Background="Transparent" >
             <MenuItem Name="SteamButton"  Header="Steam Accounts Finder"  IsCheckable="True" Foreground="#ccc">
                 <MenuItem.Icon>
-                    <Image Width="20" Height="20" Source="C:\Users\ART\Downloads\icons8-steam-64.png"/>
+                    <Image Width="20" Height="20" Source="pack://application:,,,/Res/icons8-steam-64.png"/>
                 </MenuItem.Icon>
             </MenuItem>
         </Menu>

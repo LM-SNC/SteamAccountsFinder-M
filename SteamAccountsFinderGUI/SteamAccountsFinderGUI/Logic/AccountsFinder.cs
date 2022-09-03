@@ -49,12 +49,10 @@ namespace SteamAccountsFinder
                 }
             }
 
-            for (int i = 0; i < steamAccountsTasks.Count; i++)
-            {
-                await steamAccountsTasks[i];
-                if (steamAccountsTasks[i].Result != null)
-                    steamAccounts.Add(steamAccountsTasks[i].Result);
-            }
+            await Task.WhenAll(steamAccountsTasks);
+            foreach (var t in steamAccountsTasks)
+                steamAccounts.Add(t.Result);
+
 
             return steamAccounts;
         }
