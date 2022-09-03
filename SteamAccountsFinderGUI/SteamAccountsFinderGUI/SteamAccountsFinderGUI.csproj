@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+		  <PublishSingleFile>true</PublishSingleFile>
+    </PropertyGroup>
+
+	
+
+    <ItemGroup>
+      <PackageReference Include="Daishi.JsonParser" Version="1.5.0" />
+      <PackageReference Include="WPF-UI" Version="2.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ApplicationDefinition Include="GUI\App.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+      </ApplicationDefinition>
+    </ItemGroup>
+
+</Project>
