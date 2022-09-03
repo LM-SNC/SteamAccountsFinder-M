@@ -13,7 +13,7 @@ namespace SteamAccountsFinder.AccountsFindMethods
                 foreach (var account in Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam\Users").GetSubKeyNames())
                     AddAccount(account);
             }
-            catch (Exception e)
+            catch
             {
                 // ignored
             }

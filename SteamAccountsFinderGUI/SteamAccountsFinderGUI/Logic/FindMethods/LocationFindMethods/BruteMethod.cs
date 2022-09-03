@@ -21,7 +21,7 @@ namespace SteamAccountsFinder.LocationFindMethods
                     if (result != Empty) return result;
                 }
             }
-            catch (Exception e)
+            catch
             {
 
             }

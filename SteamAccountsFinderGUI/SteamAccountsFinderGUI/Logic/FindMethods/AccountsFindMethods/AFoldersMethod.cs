@@ -19,7 +19,7 @@ namespace SteamAccountsFinder.AccountsFindMethods
                     AddAccount(directory.Name);
                 }
             }
-            catch (Exception e)
+            catch
             {
                 // ignored
             }
