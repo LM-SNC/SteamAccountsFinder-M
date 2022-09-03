@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SteamAccountsFinderGUI;
 
@@ -9,11 +10,9 @@ namespace SteamAccountsFinder
 {
     public class VacListService : SteamService
     {
-        protected override void FindAccountInfo(long steamId)
+        protected override async Task<SteamAccount?> FindAccountInfo(long steamId)
         {
-            SteamAccount steamAccount;
-            
-            HttpWebRequest request =
+            var request =
                 (HttpWebRequest)WebRequest.Create("https://vaclist.net/api/account?q=" + steamId);
 
             request.Method = "GET";
@@ -22,27 +21,29 @@ namespace SteamAccountsFinder
 
             try
             {
-                var response = (HttpWebResponse)request.GetResponse();
+                var response =  (HttpWebResponse)await request.GetResponseAsync();
 
-                steamAccount = new SteamAccount();
+                var steamAccount = new SteamAccount();
                 
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                StringBuilder output = new StringBuilder();
-                output.Append(reader.ReadToEnd());
+                var reader = new StreamReader(response.GetResponseStream());
+                var output = new StringBuilder();
+                output.Append(await reader.ReadToEndAsync());
                 response.Close();
 
-                dynamic array = JsonConvert.DeserializeObject(output.ToString());
+                dynamic array = await JsonConvert.DeserializeObjectAsync(output.ToString());
                 steamAccount.UserName = array["personaname"];
                 steamAccount.Avatar = array["avatar"];
                 steamAccount.HaveVac = array["vac_bans"] + array["game_bans"] > 0;
                 steamAccount.SteamId64 = array["steam_id"];
 
-                _steamAccount = steamAccount;
+                return steamAccount;
             }
             catch (Exception e)
             {
                 //ignored
             }
+
+            return null;
         }
     }
 }

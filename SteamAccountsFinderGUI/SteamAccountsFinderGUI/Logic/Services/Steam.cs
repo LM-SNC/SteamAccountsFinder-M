@@ -11,27 +11,22 @@ namespace SteamAccountsFinder
 
         public Steam()
         {
-            _steamServices = new List<SteamService>();
-            
-            _steamServices.Add(new VacListService());
+            _steamServices = new List<SteamService> { new VacListService() };
         }
-        public static Task<SteamAccount> GetAccountInfo(long steamId)
+        public async Task<SteamAccount?> GetAccountInfo(long steamId)
         {
-            return Task.Run(() =>
+            foreach (var steamService in _steamServices)
             {
-                foreach (var steamService in _steamServices)
-                {
-                    var steamAccount = steamService.GetAccountInfo(steamId);
+                var steamAccount = await steamService.GetAccountInfo(steamId);
 
-                    if (steamAccount != null)
-                        return steamAccount;
-                }
+                if (steamAccount != null)
+                    return steamAccount;
+            }
 
-                return null;
-            });
+            return null;
         }
-        
-        public static long GetSteamId64(long steamId)
+
+        private static long GetSteamId64(long steamId)
         {
             return 76561197960265728 + steamId;
         }
@@ -41,7 +36,7 @@ namespace SteamAccountsFinder
             return steamId >= 76561197960265728?  steamId : GetSteamId64(steamId);
         }
         
-        public static long GetSteamId32(long steamId)
+        public long GetSteamId32(long steamId)
         {
             return Math.Abs(76561197960265728 - steamId);
         }

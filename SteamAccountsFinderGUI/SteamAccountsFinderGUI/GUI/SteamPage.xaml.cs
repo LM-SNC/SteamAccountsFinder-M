@@ -28,40 +28,7 @@ namespace SteamAccountsFinderGUI
         public SteamPage()
         {
             InitializeComponent();
-            AnimateBar();
             UpdateAccounts();
-
-            // accountsList.ItemsSource = steamAccounts;
-
-            // steamAccounts.Add(new SteamAccount()
-            // {
-            //     SteamId64 = 223,
-            //     ProfileLink = "https://hui.ru"
-            // });
-
-
-
-            // Task.Run((() =>
-            // {
-            //     while (steamAccounts == null)
-            //     {
-            //         Task.Delay(1000).Wait();
-            //     }
-            //     
-            //     if (steamAccounts.Count > 0)
-            //     {
-            //         header.Visibility = Visibility.Visible;
-            //         if (steamAccounts.Count > 9)
-            //             accountsList.Margin = new Thickness(12, 0, 0, 0);
-            //         accountsList.ItemsSource = steamAccounts;
-            //         
-            //         accountsList.UpdateLayout();
-            //     }
-            //     else
-            //     {
-            //         error.Visibility = Visibility.Visible;
-            //     }
-            // }));
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
@@ -111,7 +78,7 @@ namespace SteamAccountsFinderGUI
 
         private async void UpdateTextAnimation(TextBlock textBlock)
         {
-            string baseValue = textBlock.Text;
+            var baseValue = textBlock.Text;
             textBlock.Text = "Сopied";
             await Task.Delay(1000);
             textBlock.Text = baseValue;
@@ -119,8 +86,8 @@ namespace SteamAccountsFinderGUI
         
         private async void UpdateAccounts()
         {
-            new Steam();
-            AccountsFinder steamAccountFinder = new AccountsFinder();
+            var steam = new Steam();
+            var steamAccountFinder = new AccountsFinder(steam);
 
             //Methods for finding a steam location
             steamAccountFinder.AddLocationMethod(new RegeditMethod(@"SOFTWARE\Valve\Steam1"));
@@ -133,7 +100,7 @@ namespace SteamAccountsFinderGUI
                 .AddDefaultPath(@"G:\Steam\steam.exe")
                 .AddDefaultPath(@"N:\Steam\steam.exe"));
             steamAccountFinder.AddLocationMethod(new BruteMethod());
-            steamAccountFinder.Init();
+            steamAccountFinder.FindSteamLocation();
             
             //Account search methods
             steamAccountFinder.AddAccountsMethod(new ALogsMethod());
@@ -142,7 +109,7 @@ namespace SteamAccountsFinderGUI
             steamAccountFinder.AddAccountsMethod(new AFoldersMethod());
             steamAccountFinder.AddAccountsMethod(new ACacheMethod());
 
-            accountsList.ItemsSource = await steamAccountFinder.GetAccounts();
+            accountsList.ItemsSource = await steamAccountFinder.GetAccounts(loader);
 
 
             loader.Value = 100;
@@ -159,12 +126,7 @@ namespace SteamAccountsFinderGUI
                 error.Visibility = Visibility.Visible;
             }
         }
-
-        private async void AnimateBar()
-        {
-            DoubleAnimation animation = new DoubleAnimation(100, new Duration(new TimeSpan(0, 0, 5)));
-            loader.BeginAnimation(ProgressBar.ValueProperty, animation);
-        }
+        
         private void UpdateBorder(int id, CornerRadius cornerRadius)
         {
             Border border = FindElementInVisualTree<Border>((ListBoxItem)accountsList.ItemContainerGenerator?

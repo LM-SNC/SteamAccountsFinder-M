@@ -1,17 +1,15 @@
-﻿using SteamAccountsFinderGUI;
+﻿using System.Threading.Tasks;
+using SteamAccountsFinderGUI;
 
 namespace SteamAccountsFinder
 {
     public abstract class SteamService
     {
-        protected SteamAccount _steamAccount = null;
-        
-        public SteamAccount GetAccountInfo(long steamId)
+        public Task<SteamAccount?> GetAccountInfo(long steamId)
         {
-            FindAccountInfo(steamId);
-            return _steamAccount;
+            return FindAccountInfo(steamId);
         }
 
-        protected abstract void FindAccountInfo(long steamId);
+        protected abstract Task<SteamAccount?> FindAccountInfo(long steamId);
     }
 }
