@@ -8,7 +8,7 @@ namespace SteamAccountsFinder.AccountsFindMethods
     {
         public override IEnumerable<long> Find()
         {
-            var regKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam\Users1");
+            var regKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam\Users");
             if (regKey == null)
                 yield break;
             foreach (var account in regKey.GetSubKeyNames())
