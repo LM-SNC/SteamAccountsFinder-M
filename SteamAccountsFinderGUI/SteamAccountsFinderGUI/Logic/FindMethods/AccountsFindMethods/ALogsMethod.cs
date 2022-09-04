@@ -26,7 +26,8 @@ namespace SteamAccountsFinder.AccountsFindMethods
                     while ((line = streamReader.ReadLine()) != null)
                     {
                         if (line.Contains("accountid"))
-                            yield return long.Parse(rx.Match(line).Groups[1].Value);
+                            if (long.TryParse(rx.Match(line).Groups[1].Value, out long steamid))
+                                yield return steamid;
                     }
                 }
                 
