@@ -18,12 +18,13 @@ namespace SteamAccountsFinder.LocationFindMethods
                     if (IsSteamPath(directory))
                         return directory;
                     var result = Search(directory, level + 1);
-                    if (result != Empty) return result;
+                    if (result != Empty) 
+                        return result;
                 }
             }
             catch
             {
-
+                //ignore
             }
 
             return Empty;
@@ -50,10 +51,9 @@ namespace SteamAccountsFinder.LocationFindMethods
             foreach (var drive in DriveInfo.GetDrives())
             {
                 var findPath = Search(drive.Name);
-                if (findPath == Empty) continue;
-                
+                if (findPath == Empty) 
+                    continue;
                 _steamPath = findPath;
-                //break;
             }
         }
     }

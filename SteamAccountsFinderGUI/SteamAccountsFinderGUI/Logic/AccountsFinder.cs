@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using SteamAccountsFinder.AccountsFindMethods;
 using SteamAccountsFinderGUI;
 
 namespace SteamAccountsFinder
@@ -11,7 +8,7 @@ namespace SteamAccountsFinder
     public class AccountsFinder
     {
         private readonly Steam _steam;
-        private string _steamPath;
+        public string _steamPath;
 
         private readonly List<LocationFindMethod> _locationFindMethods = new();
         private readonly List<AccountFindMethod> _accountsFindMethods = new();
@@ -24,10 +21,6 @@ namespace SteamAccountsFinder
         public void FindSteamLocation()
         {
             _steamPath = GetSteamLocation();
-            Console.WriteLine("Steam: " + _steamPath);
-
-            if (string.IsNullOrEmpty(_steamPath))
-                throw new Exception("Steam not found");
         }
 
         public async Task<List<SteamAccount>> GetAccounts(ProgressBar progressBar)
@@ -36,20 +29,17 @@ namespace SteamAccountsFinder
             var existsAccounts = new List<long>();
 
             var steamAccountsTasks = new List<Task<SteamAccount?>>();
-
-            var completedCount = 0;
+            
             async Task<SteamAccount?> GetAccountInfoProgress(long steamId)
             {
                 var result = await _steam.GetAccountInfo(steamId);
-
-                progressBar.Value = completedCount++;
-
+                progressBar.Value++;
                 return result;
             }
 
             foreach (var findAccountsMethod in _accountsFindMethods)
             {
-                foreach (var account in findAccountsMethod.GetAccounts())
+                foreach (var account in findAccountsMethod.Find())
                 {
                     var steamId = Steam.Validate64(account);
                     if (!existsAccounts.Contains(steamId))
@@ -59,8 +49,7 @@ namespace SteamAccountsFinder
                     }
                 }
             }
-
-            progressBar.Maximum = steamAccountsTasks.Count;
+            progressBar.Maximum = steamAccountsTasks.Count-1;
 
             await Task.WhenAll(steamAccountsTasks);
 

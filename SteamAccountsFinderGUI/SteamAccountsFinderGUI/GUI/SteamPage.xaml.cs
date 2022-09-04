@@ -90,7 +90,7 @@ namespace SteamAccountsFinderGUI
             var steamAccountFinder = new AccountsFinder(steam);
 
             //Methods for finding a steam location
-            steamAccountFinder.AddLocationMethod(new RegeditMethod(@"SOFTWARE\Valve\Steam1"));
+            steamAccountFinder.AddLocationMethod(new RegeditMethod(@"SOFTWARE\Valve\Steam"));
             steamAccountFinder.AddLocationMethod(new DefaultPathMethod()
                 .AddDefaultPath(@"С:\Program Files (x86)\Steam\steam.exe")
                 .AddDefaultPath(@"E:\Steam\steam.exe")
@@ -100,19 +100,18 @@ namespace SteamAccountsFinderGUI
                 .AddDefaultPath(@"G:\Steam\steam.exe")
                 .AddDefaultPath(@"N:\Steam\steam.exe"));
             steamAccountFinder.AddLocationMethod(new BruteMethod());
+
             steamAccountFinder.FindSteamLocation();
-            
+
             //Account search methods
             steamAccountFinder.AddAccountsMethod(new ALogsMethod());
             steamAccountFinder.AddAccountsMethod(new ARegeditMethod());
             steamAccountFinder.AddAccountsMethod(new AConfigFindMethod());
             steamAccountFinder.AddAccountsMethod(new AFoldersMethod());
             steamAccountFinder.AddAccountsMethod(new ACacheMethod());
-
-            accountsList.ItemsSource = await steamAccountFinder.GetAccounts(loader);
-
-
-            loader.Value = 100;
+            
+            if (!String.IsNullOrEmpty(steamAccountFinder._steamPath))
+                accountsList.ItemsSource = await steamAccountFinder.GetAccounts(loader);
             loader.Visibility = Visibility.Collapsed;
 
             if (accountsList.Items.Count > 0)
