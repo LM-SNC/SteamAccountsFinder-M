@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace SteamAccountsFinder.AccountsFindMethods
@@ -7,22 +6,14 @@ namespace SteamAccountsFinder.AccountsFindMethods
     public class AFoldersMethod : AccountFindMethod
     {
 
-        protected override void Find()
+        public override IEnumerable<long> Find()
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(_steamPath + "\\userdata");
             if (!directoryInfo.Exists)
-                return;
-            try
-            {
-                foreach (var directory in directoryInfo.GetDirectories())
-                {
-                    AddAccount(directory.Name);
-                }
-            }
-            catch (Exception e)
-            {
-                // ignored
-            }
+                yield break;
+            foreach (var directory in directoryInfo.GetDirectories())
+                if (long.TryParse(directory.Name, out long steamId))
+                    yield return steamId;
         }
     }
 }

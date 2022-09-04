@@ -18,7 +18,7 @@ namespace SteamAccountsFinder.LocationFindMethods
             {
                 _steamPath = Registry.CurrentUser.OpenSubKey(_subKey).GetValue("SteamExe").ToString();
             }
-            catch (Exception e)
+            catch
             {
                 // ignored
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -7,11 +8,7 @@ namespace SteamAccountsFinder.AccountsFindMethods
 {
     public class ALogsMethod : AccountFindMethod
     {
-        public ALogsMethod()
-        {
-        }
-
-        protected override void Find()
+        public override IEnumerable<long> Find()
         {
             string fullPath = _steamPath + "\\logs\\webhelper.txt";
             FileInfo fileInfo = new FileInfo(fullPath);
@@ -29,10 +26,10 @@ namespace SteamAccountsFinder.AccountsFindMethods
                     while ((line = streamReader.ReadLine()) != null)
                     {
                         if (line.Contains("accountid"))
-                            AddAccount(rx.Match(line).Groups[1].Value);
+                            if (long.TryParse(rx.Match(line).Groups[1].Value, out long steamid))
+                                yield return steamid;
                     }
                 }
-                
                 tmpLog.Delete();
             }
         }

@@ -7,5 +7,7 @@
             Find();
             return _steamPath.Replace("steam.exe", "");
         }
+        
+        protected abstract void Find();
     }
 }

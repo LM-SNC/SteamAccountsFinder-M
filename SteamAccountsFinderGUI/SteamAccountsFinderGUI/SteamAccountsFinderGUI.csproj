@@ -6,7 +6,8 @@
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
         <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-          <ApplicationIcon>Res\redIcon.ico</ApplicationIcon>
+		<ApplicationIcon>Res\redIcon.ico</ApplicationIcon>
+		<PublishSingleFile>true</PublishSingleFile>
     </PropertyGroup>
 
 	

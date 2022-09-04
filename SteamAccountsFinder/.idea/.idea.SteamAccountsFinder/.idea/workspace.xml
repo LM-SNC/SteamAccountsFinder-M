@@ -4,17 +4,31 @@
     <projectFile>SteamAccountsFinder/SteamAccountsFinder.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b24e8a99-b5b3-4464-bf49-cbb3a2ce287b" name="Changes" comment="" />
+    <list default="true" id="b24e8a99-b5b3-4464-bf49-cbb3a2ce287b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SteamAccountsFinder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SteamAccountsFinder/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/ACacheMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/ACacheMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/AConfigFindMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/AConfigFindMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/AFoldersMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/AFoldersMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/ALogsMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/ALogsMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/ARegeditMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/ARegeditMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/AccountFindMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/AccountsFindMethods/AccountFindMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/FindMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/FindMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/LocationFindMethods/BruteMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/LocationFindMethods/BruteMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/LocationFindMethods/LocationFindMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/LocationFindMethods/LocationFindMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/LocationFindMethods/RegeditMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/FindMethods/LocationFindMethods/RegeditMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamAccountsFinder/SteamAccountsFinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SteamAccountsFinder/SteamAccountsFinder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SteamAccountsFinderGUI/SteamAccountsFinderGUI/SteamAccountsFinderGUI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../SteamAccountsFinderGUI/SteamAccountsFinderGUI/SteamAccountsFinderGUI.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/SteamAccountsFinder/Services/Steam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3f7fd384ffbdf393434b2b5984139833db1cd945faafcf35c4f765c5c3ec6a/Future.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c3ef8457ffe35c991188ccc57fe86ca7ea8f589d95f64069a89faefa44d08e5f/String.Searching.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8f5dc45d8d168f8b3356936907312f7f580e971f984e59cbe88a756c1860f6/DirectoryInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SteamAccountsFinder/Services/Steam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1862618fa160caa875eb65c65b85da26bef8adbc4ed5cdd6b4464b2e3a82d/Directory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3472bd8a1feb11abb593d351b16d7df65a7735acc51425387bd15fa65b954c/Boolean.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b2b289cbf828c2e269342633da95e1458982d03d96cf32448835ce3e293fa8c5/File.cs" root0="SKIP_HIGHLIGHTING" />
@@ -25,6 +39,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Dkv6OzGCN8FOyHyIlWV716rT7a" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -68,6 +83,7 @@
       <workItem from="1661624673068" duration="22907000" />
       <workItem from="1661756883892" duration="5336000" />
       <workItem from="1661867605626" duration="1833000" />
+      <workItem from="1662299854238" duration="689000" />
     </task>
     <servers />
   </component>

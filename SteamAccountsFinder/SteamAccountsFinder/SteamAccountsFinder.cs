@@ -37,7 +37,7 @@ namespace SteamAccountsFinder
 
             foreach (var findAccountsMethod in _accountsFindMethods)
             {
-                foreach (var account in findAccountsMethod.GetAccounts())
+                foreach (var account in findAccountsMethod.Find())
                 {
                     long steamId = Steam.Validate64(account);
                     if (!existsAccounts.Contains(steamId))

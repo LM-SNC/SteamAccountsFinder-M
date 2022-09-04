@@ -6,17 +6,14 @@ namespace SteamAccountsFinder.AccountsFindMethods
 {
     public class ARegeditMethod : AccountFindMethod
     {
-        protected override void Find()
+        public override IEnumerable<long> Find()
         {
-            try
-            {
-                foreach (var account in Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam\Users").GetSubKeyNames())
-                    AddAccount(account);
-            }
-            catch (Exception e)
-            {
-                // ignored
-            }
+            var regKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam\Users");
+            if (regKey == null)
+                yield break;
+            foreach (var account in regKey.GetSubKeyNames())
+                if (long.TryParse(account, out long steamId))
+                    yield return steamId;
         }
     }
 }
